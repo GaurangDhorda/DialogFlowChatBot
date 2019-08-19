@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
       date: new Date()
     });
   }
-  addBotMessage(text){
+  addBotMessage(text) {
     this.messages.push({
       text,
       sender: 'Bot',
