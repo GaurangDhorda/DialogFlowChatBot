@@ -13,12 +13,11 @@
                        [reply]="msg.reply"
                        [sender]="msg.sender"
                        [date]="msg.date"
-                       [avatar]="msg.avatar">
+                       >
   </nb-chat-message>
   
     <nb-chat-message *ngIf="loading" [nbSpinner]="loading" nbSpinnerStatus="info"
     type="text"
-    avatar="/assets/bot.jpeg"
     message="...">
     
     </nb-chat-message>

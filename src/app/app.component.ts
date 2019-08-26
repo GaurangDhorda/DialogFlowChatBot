@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     this.messages.push({
       text,
       sender: 'Bot',
-      avatar: '/assets/chatbot.png',
+     // avatar: '/assets/chatbot.png',
       date: new Date()
     });
   }

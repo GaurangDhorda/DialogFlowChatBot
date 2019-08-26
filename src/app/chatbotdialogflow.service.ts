@@ -8,12 +8,12 @@ export class ChatbotdialogflowService {
 
   constructor(private http: HttpClient) { }
   dialogFLow(sessionID, text) {
-    return this.http.post<any> ('http://chatnodejsappdemo.herokuapp.com/dialogflowGateway', {
+    return this.http.post<any> ('https://chatnodejsappdemo.herokuapp.com/dialogflowGateway', {
       sessionId: sessionID,
       queryInput: {
         text: {
           text,
-          languageCode: 'en-US'
+          languageCongde: 'en-US'
         }
       }
     });
