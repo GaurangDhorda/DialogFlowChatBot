@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ChatbotdialogflowService } from './chatbotdialogflow.service';
+import { NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,9 @@ export class AppComponent implements OnInit {
   // Random ID to maintain session with server
   sessionId = Math.random().toString(36).slice(-5);
 
-  constructor(private http: HttpClient, private chatbotService: ChatbotdialogflowService) { }
+  constructor(private http: HttpClient, private chatbotService: ChatbotdialogflowService, private  ts: NbThemeService) {
+    this.ts.appendLayoutClass('column');
+   }
 
   ngOnInit() {
     this.addBotMessage('Human presence detected 🤖. How can I help you? ');

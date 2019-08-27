@@ -1,3 +1,21 @@
 .container{
     overflow: scroll;
 }
+.mainDiv{
+    padding: 1rem;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+}
+.mainDiv a{
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: .5rem;
+    background-color: springgreen;
+    color: black;
+    font-weight: 500;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+ 

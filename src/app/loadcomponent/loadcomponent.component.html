@@ -1,1 +1,4 @@
-<p>loadcomponent works!</p>
+
+<ng-container *ngFor="let data of messages">
+        <app-dynocomponent [i]=" data" ></app-dynocomponent>       
+</ng-container>

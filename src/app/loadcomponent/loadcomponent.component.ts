@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from './communication.service';
+import { ModelData } from '../modeldata';
 
 @Component({
   selector: 'app-loadcomponent',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loadcomponent.component.css']
 })
 export class LoadcomponentComponent implements OnInit {
-
-  constructor() { }
+   messages: ModelData [ ];
+  constructor(private ms: CommunicationService) { }
 
   ngOnInit() {
+    this.ms.getData().subscribe(data => {
+      this.messages = data;
+    });
   }
 
 }

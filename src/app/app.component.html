@@ -1,11 +1,10 @@
-<nb-layout>
+<nb-layout  [windowMode]="true">
 
   <nb-layout-header fixed>
-  Chating Bot
+      <h4>Chatting Bot</h4> 
   </nb-layout-header>
 
-        <nb-layout-column>
-    <router-outlet></router-outlet>
+    <nb-layout-column >
     <nb-chat title="Conversation with a Bot" size="large">
       <nb-chat-message *ngFor="let msg of messages"
                        type="text"
@@ -22,16 +21,21 @@
     
     </nb-chat-message>
 
-
     <nb-chat-form (send)="handleUserMessage($event)" [dropFiles]="true">
     </nb-chat-form>
 
 </nb-chat>
 </nb-layout-column>
-
+<nb-layout-column >
+  <div class="mainDiv">
+    <a [routerLink]="['/loadcomponent']">lazy component</a>
+  </div>
+    <router-outlet></router-outlet>
+  
+</nb-layout-column>
 
   <nb-layout-footer fixed>
-  <!-- Insert footer here -->
+      
   </nb-layout-footer>
 
 </nb-layout>

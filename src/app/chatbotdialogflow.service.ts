@@ -13,7 +13,7 @@ export class ChatbotdialogflowService {
       queryInput: {
         text: {
           text,
-          languageCongde: 'en-US'
+          languageCode: 'en-US'
         }
       }
     });
