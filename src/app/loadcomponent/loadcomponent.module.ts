@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoadcomponentRoutingModule } from './loadcomponent-routing.module';
 import { LoadcomponentComponent } from './loadcomponent.component';
 import { DynocomponentComponent } from './dynocomponent/dynocomponent.component';
-import { NbCardModule, NbListComponent, NbListModule, NbLayoutModule, NbChatModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule, NbListComponent, NbListModule, NbLayoutModule, NbChatModule, NbSpinnerModule, NbButtonModule, NbIconModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
@@ -14,11 +14,13 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     CommonModule,
     LoadcomponentRoutingModule,
     NbCardModule,
-  NbListModule,
-  NbEvaIconsModule,
+    NbListModule,
     NbLayoutModule,
     NbChatModule,
-    NbSpinnerModule
+    NbSpinnerModule,
+    NbButtonModule,
+    NbEvaIconsModule,
+    NbIconModule
   ]
 })
 export class LoadcomponentModule { }

@@ -2,6 +2,8 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommunicationService } from '../communication.service';
 import { ModelData } from 'src/app/modeldata';
+import { Route, Router, ActivatedRoute } from '@angular/router';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-dynocomponent',
@@ -19,7 +21,9 @@ export class DynocomponentComponent implements OnInit {
       this.cardSize = 'medium';
     }
   }
-  constructor(private inputMessageService: CommunicationService) { }
+  constructor(private inputMessageService: CommunicationService
+            , private router: Router, private activatedRoute: ActivatedRoute,
+              private sidebarService: NbSidebarService) { }
 
   ngOnInit() {
     if (window.innerWidth <= 770) {
@@ -27,5 +31,14 @@ export class DynocomponentComponent implements OnInit {
     } else {
       this.cardSize = 'medium';
     }
+  }
+  selectData(fieldName: string) {
+    console.log(fieldName);
+    this.inputMessageService.sendMessage(fieldName);
+    this.toggle();
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  }
+  toggle(){
+    this.sidebarService.expand('left');
   }
 }

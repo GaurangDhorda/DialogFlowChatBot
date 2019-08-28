@@ -9,6 +9,7 @@ import { ModelData } from '../modeldata';
 })
 export class LoadcomponentComponent implements OnInit {
    messages: ModelData [ ];
+   
   constructor(private ms: CommunicationService) { }
 
   ngOnInit() {
@@ -16,5 +17,9 @@ export class LoadcomponentComponent implements OnInit {
       this.messages = data;
     });
   }
-
+  getMessage() {
+    this.ms.getMessage().subscribe(text =>{
+      console.log(text);
+    });
+  }
 }

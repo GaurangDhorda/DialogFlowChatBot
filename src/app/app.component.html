@@ -1,10 +1,21 @@
 <nb-layout  [windowMode]="true">
-
-  <nb-layout-header fixed>
-      <h4>Chatting Bot</h4> 
+  
+  <nb-layout-header   fixed>
+      <nb-icon icon="menu" (click)="toggle()" status="primary" ></nb-icon>
+    <h4>Chatting Bot</h4>
   </nb-layout-header>
-
-    <nb-layout-column >
+  <nb-sidebar responsive tag='left'>  
+    <div class="mainDiv" *ngIf="!chatColumn"><a (click)= "chatToggle()">Chat Bot</a></div>  
+        
+    <div class="mainDiv">
+      <a [routerLink]="['/loadcomponent']" (click)="clearMessage()">lazy component</a>
+    </div>
+    <div *ngIf="selectName">
+      <h6>You selected</h6>
+      <p >{{selectName}}</p>
+    </div>
+  </nb-sidebar>
+    <nb-layout-column *ngIf="chatColumn" >
     <nb-chat title="Conversation with a Bot" size="large">
       <nb-chat-message *ngFor="let msg of messages"
                        type="text"
@@ -26,12 +37,8 @@
 
 </nb-chat>
 </nb-layout-column>
-<nb-layout-column >
-  <div class="mainDiv">
-    <a [routerLink]="['/loadcomponent']">lazy component</a>
-  </div>
+<nb-layout-column *ngIf="boolComponent">
     <router-outlet></router-outlet>
-  
 </nb-layout-column>
 
   <nb-layout-footer fixed>

@@ -21,7 +21,7 @@ private subject = new Subject<any>();
   errorhandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server error');
   }
-  sendMessage(message: ModelData) {
+  sendMessage(message: string) {
     this.subject.next(message);
   }
 

@@ -3,4 +3,12 @@
     height: auto;
     border-radius: 1rem;
 }
-
+.footerContainer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+h6{
+    margin: 0;
+    width: 100%;
+}

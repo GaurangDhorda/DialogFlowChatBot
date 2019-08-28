@@ -1,12 +1,14 @@
 
-<nb-card [size]="cardSize" status="info"  >
-    
-        <nb-card-header> {{cardSize}} {{i.id}}  {{i.name}}</nb-card-header>
+<nb-card [size]="cardSize" status="info" >
+        <nb-card-header> {{i.id}}  {{i.name}}</nb-card-header>
         <nb-card-body>
-            
-                <img [src]="i.imageUrl" class="image">      
-            
+                <img [src]="i.imageUrl" class="image">
         </nb-card-body>
-        <nb-card-footer>Price {{i.price | currency: i.priceCurrency}}</nb-card-footer>
+        <nb-card-footer>
+            <div class="footerContainer">
+                <h6> Price {{i.price | currency: i.priceCurrency}} </h6>
+                <button nbButton (click)="selectData(i.name)" ><nb-icon icon="star"></nb-icon>Select</button>
+            </div>
+        </nb-card-footer>
 </nb-card>
 

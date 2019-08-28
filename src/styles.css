@@ -4,9 +4,13 @@ nb-layout-column {
     height: 100vh;
 }
 
-
 @media only screen and (max-width: 600px) {
-    
+    nb-layout-header{
+        display: block;
+    }
+    .selectDiv{
+        display: block;
+    }
     .columns{
         display: block !important;
         overflow-y: scroll !important
