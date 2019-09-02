@@ -1,18 +1,29 @@
+
 <nb-layout  [windowMode]="true">
-  
+
+  <nb-progress-bar [value]="50"></nb-progress-bar>
   <nb-layout-header   fixed>
       <nb-icon icon="menu" (click)="toggle()" status="primary" ></nb-icon>
     <h4>Chatting Bot</h4>
   </nb-layout-header>
-  <nb-sidebar responsive tag='left'>  
-    <div class="mainDiv" *ngIf="!chatColumn"><a (click)= "chatToggle()">Chat Bot</a></div>  
+
+  <nb-sidebar responsive tag='left'>
         
+    <div class="mainDiv" *ngIf="enableChatButton">
+        <button type="button" class="btn btn-success" (click)= "chatToggle()">Chat Bot</button>
+    </div>  
+    <button type="button" class="btn btn-success" 
+            [routerLink]="['/loadcomponent']" (click)="clearMessage()">Lazy Component
+    </button>
+   <!--
     <div class="mainDiv">
       <a [routerLink]="['/loadcomponent']" (click)="clearMessage()">lazy component</a>
     </div>
-    <div *ngIf="selectName">
-      <h6>You selected</h6>
-      <p >{{selectName}}</p>
+   -->
+
+    <div *ngIf="selectName" class="card lazyComponenet">
+      <h6 class="card-header">You Selected</h6>
+      <p class="card-text">{{selectName}}</p>
     </div>
   </nb-sidebar>
     <nb-layout-column *ngIf="chatColumn" >
@@ -38,6 +49,26 @@
 </nb-chat>
 </nb-layout-column>
 <nb-layout-column *ngIf="boolComponent">
+      <div class="d-flex justify-content-center" *ngIf="isLoading">
+          <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
     <router-outlet></router-outlet>
 </nb-layout-column>
 

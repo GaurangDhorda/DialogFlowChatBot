@@ -3,6 +3,19 @@ nb-layout-column {
     overflow-y: scroll !important;
     height: 100vh;
 }
+nb-layout-header{
+    background-color: #009688 !important;
+}
+nb-icon{
+    color: #fff !important;
+}
+nb-sidebar{
+    background-color: #c6e6e3 !important;
+    transition: width .5s !important;
+}
+.progress{
+    display: block !important;
+}
 
 @media only screen and (max-width: 600px) {
     nb-layout-header{

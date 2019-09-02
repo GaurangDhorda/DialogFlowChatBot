@@ -1,9 +1,14 @@
-
 <nb-card [size]="cardSize" status="info" >
         <nb-card-header> {{i.id}}  {{i.name}}</nb-card-header>
-        <nb-card-body>
-                <img [src]="i.imageUrl" class="image">
-        </nb-card-body>
+         <nb-card-body>
+                <div class="d-flex justify-content-center" *ngIf="loading">
+                        <div id="spinner" class="spinner-border text-success" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                </div>
+                <img [hidden]="loading" (load)="onLoad()" [src]="i.imageUrl" class="image" alt="loading">
+            </nb-card-body>
+     
         <nb-card-footer>
             <div class="footerContainer">
                 <h6> Price {{i.price | currency: i.priceCurrency}} </h6>
@@ -11,4 +16,3 @@
             </div>
         </nb-card-footer>
 </nb-card>
-

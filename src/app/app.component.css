@@ -8,7 +8,7 @@ nb-icon{
     margin-right: 1em;
 }
 .mainDiv{
-    padding: 1rem;
+    padding: 0 0 1rem;
     font-size: 1rem;
     text-decoration: none;
     text-align: center;
@@ -25,13 +25,23 @@ nb-icon{
     text-transform: capitalize;
     cursor: pointer;
 }
-h6{
+
+.lazyComponenet h6{
     margin: 0;
     text-align: center;
     padding: 1rem;
 }
- p{
-    margin: 0;
+.lazyComponenet p{
+    text-transform: capitalize;
+    margin-top: .5em;
+    padding: .5rem;
+    font-size: 1rem;
+    word-break: break-word;
+    font-weight: 600;
+    opacity: .9;
+}
+.lazyComponenet {
+    margin-top: 1em;
     box-shadow: 1px 1px 3px 1px black;
     padding: .5rem;
     font-size: 1.2rem;

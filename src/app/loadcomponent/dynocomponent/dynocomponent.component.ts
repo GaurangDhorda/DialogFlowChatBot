@@ -13,6 +13,7 @@ import { NbSidebarService } from '@nebular/theme';
 export class DynocomponentComponent implements OnInit {
   @Input() i: ModelData ;
   cardSize: string;
+  loading: boolean;
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (window.innerWidth <= 770) {
@@ -31,6 +32,10 @@ export class DynocomponentComponent implements OnInit {
     } else {
       this.cardSize = 'medium';
     }
+    this.loading = true;
+  }
+  onLoad() {
+    this.loading = false;
   }
   selectData(fieldName: string) {
     console.log(fieldName);
@@ -38,7 +43,7 @@ export class DynocomponentComponent implements OnInit {
     this.toggle();
     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
   }
-  toggle(){
+  toggle() {
     this.sidebarService.expand('left');
   }
 }
