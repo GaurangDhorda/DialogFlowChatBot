@@ -10,6 +10,11 @@ p{
 h6{
     letter-spacing: 1px;
 }
+.card-flex{
+    display: flex;
+    flex: 0 0 50%;
+    flex-wrap: wrap;
+}
 .lazyComponenet {
     margin-top: 1em;
     box-shadow: 1px 1px 3px 1px black;
@@ -19,4 +24,10 @@ h6{
     word-spacing: 1px;
     font-weight: 500;
     line-height: 1em;
+}
+
+@media only screen and (max-width: 768px){
+    .card-flex{
+        display: inline-block;
+    }
 }

@@ -22,8 +22,9 @@
                 <h6 class="card-header text-center text-white bg-danger mb-3">Error</h6>
                 <p class="card-text">{{errorMessage}}</p>
         </div>
-<ng-container *ngFor="let data of messages">
-                
-                          
-        <app-dynocomponent (message)="getMessage()" [i]="data" ></app-dynocomponent>       
-</ng-container>
+<div class="card-flex">
+  <div *ngFor="let data of messages" class="card-flex" >
+        <!-- <div   style = "margin: 0 auto;width: 50%;">         -->
+          <app-dynocomponent (message)="getMessage()" [i]="data" ></app-dynocomponent>       
+  </div>
+</div>

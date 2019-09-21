@@ -1,20 +1,35 @@
-
 <nb-layout  [windowMode]="true">
-
+  
   <nb-progress-bar [value]="50"></nb-progress-bar>
-  <nb-layout-header   fixed>
-      <nb-icon icon="menu" (click)="toggle()" status="primary" ></nb-icon>
+  <nb-layout-header fixed>
+  <div class="d-flex flex-row navbar-collapse ">
+    <nb-icon icon="menu" class="ripple" [ngClass]="iconState ? 'rotate':'' "  (click)="toggle()" status="primary" ></nb-icon>
     <h4>Chatting Bot</h4>
+  </div>
+  <div class="navbar-nav d-flex flex-row  justify-content-between">
+      
+      
+  </div>  
   </nb-layout-header>
 
-  <nb-sidebar responsive tag='left'>
-        
-    <div class="mainDiv" *ngIf="enableChatButton">
-        <button type="button" class="btn btn-success" (click)= "chatToggle()">Chat Bot</button>
-    </div>  
-    <button type="button" class="btn btn-success" 
-            [routerLink]="['/loadcomponent']" (click)="clearMessage()">Lazy Component
-    </button>
+  <nb-sidebar responsive tag='left' *ngIf= "chatbotService.isUserLoggedIn()">
+      
+      <div  class="card lazyComponenet">
+          <h6 class="card-header text-capitalize text-danger">
+                  Wellcome {{ chatbotService.getLoggedInUser() }}
+                  <p class="card-text"><button *ngIf= "chatbotService.isUserLoggedIn()"  type="butoon" 
+                    class= "btn btn-danger " (click)="logoutUser()"  >Logout</button></p>
+          </h6>
+
+            <div class="mainDiv" >
+                <button type="button" *ngIf= "chatbotService.isUserLoggedIn()" class="btn btn-success" [routerLink]="['/chat']" (click)= "chatToggle()">Chat Bot</button>
+            </div>  
+            <button type="button" class="btn btn-success "  *ngIf= "chatbotService.isUserLoggedIn()"
+                    [routerLink]="['/loadcomponent']" (click)="clearMessage()">Lazy Component
+            </button>
+      </div>
+
+    
    <!--
     <div class="mainDiv">
       <a [routerLink]="['/loadcomponent']" (click)="clearMessage()">lazy component</a>
@@ -26,54 +41,16 @@
       <p class="card-text">{{selectName}}</p>
     </div>
   </nb-sidebar>
-    <nb-layout-column *ngIf="chatColumn" >
-    <nb-chat title="Conversation with a Bot" size="large">
-      <nb-chat-message *ngFor="let msg of messages"
-                       type="text"
-                       [message]="msg.text"
-                       [reply]="msg.reply"
-                       [sender]="msg.sender"
-                       [date]="msg.date"
-                       >
-  </nb-chat-message>
   
-    <nb-chat-message *ngIf="loading" [nbSpinner]="loading" nbSpinnerStatus="info"
-    type="text"
-    message="...">
+  <nb-layout-column >
+    <div style="margin: 0 auto; width:90%">
+          <router-outlet ></router-outlet>
+    </div>
+  </nb-layout-column>
     
-    </nb-chat-message>
-
-    <nb-chat-form (send)="handleUserMessage($event)" [dropFiles]="true">
-    </nb-chat-form>
-
-</nb-chat>
-</nb-layout-column>
-<nb-layout-column *ngIf="boolComponent">
-      <div class="d-flex justify-content-center" *ngIf="isLoading">
-          <div class="spinner-grow text-primary" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-secondary" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-success" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-              <div class="spinner-grow text-danger" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-              <div class="spinner-grow text-warning" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-              <div class="spinner-grow text-info" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-        </div>
-    <router-outlet></router-outlet>
-</nb-layout-column>
 
   <nb-layout-footer fixed>
-      
+      Version 1.0
   </nb-layout-footer>
 
 </nb-layout>

@@ -1,14 +1,23 @@
 .container{
     overflow: scroll;
 }
-
+.welcome{
+    letter-spacing: 1px;
+}
 nb-icon{
     cursor: pointer;
     font-size: 3rem;
     margin-right: 1em;
+    transition-duration: 350ms;
+    transition-property: transform;
+}
+.rotate{
+    
+    transform: rotate(-45deg);
 }
 .mainDiv{
     padding: 0 0 1rem;
+    margin-top: 1rem;
     font-size: 1rem;
     text-decoration: none;
     text-align: center;
@@ -25,7 +34,9 @@ nb-icon{
     text-transform: capitalize;
     cursor: pointer;
 }
-
+.btn-logout{
+    margin-top: 1rem;
+}
 .lazyComponenet h6{
     margin: 0;
     text-align: center;
@@ -50,5 +61,12 @@ nb-icon{
     font-weight: 500;
     line-height: 1em;
 }
+nb-layout-column{
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
+#carouselExampleIndicators{
+    height: 50vh;
+}
  

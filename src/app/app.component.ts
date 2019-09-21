@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChatbotdialogflowService } from './chatbotdialogflow.service';
 import { NbThemeService, NbSidebarService } from '@nebular/theme';
 import { CommunicationService } from './loadcomponent/communication.service';
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   chatColumn: boolean;
   enableChatButton: boolean;
   isLoading: boolean;
+  iconState: boolean;
   subcription: Subscription = new Subscription ();
   // Random ID to maintain session with server
   sessionId = Math.random().toString(36).slice(-5);
@@ -28,9 +29,11 @@ onResize(event) {
   if (window.innerWidth <= 770) {
       this.chatColumn = true;
       this.enableChatButton = true;
+      this.iconState = false;
   }
   else{
     this.enableChatButton = false;
+    this.iconState = true;
   }
 }
   constructor(private http: HttpClient, private chatbotService: ChatbotdialogflowService, private  ts: NbThemeService,
@@ -44,7 +47,8 @@ onResize(event) {
       if (eventsName instanceof NavigationStart) {
         this.isLoading = true;
        // console.log(eventsName.url);
-        if (eventsName.url === '/') {
+        if (eventsName.url === '/login') {
+       } else if (eventsName.url === '/') {
          this.boolComponent = false;
        } else {
          this.boolComponent = true;
@@ -56,20 +60,13 @@ onResize(event) {
      }));
    }
   ngOnInit() {
-    this.addBotMessage('Human presence detected 🤖. How can I help you? ');
     this.subcription.add( this.ms.getMessage().subscribe(text =>  {
       this.selectName = text;
+      this.iconState = true;
     }));
+    (window.innerWidth <= 770) ?  this.iconState = false : this.iconState = true;
     this.boolComponent = false;
     this.enableChatButton  = false;
-    this.onOffChat();
-  }
-
-  onOffChat() {
-    if (window.innerWidth <= 770) {
-      this.enableChatButton= true;
-      this.chatColumn = false;
-    } else {  this.chatColumn = true; this.enableChatButton = false; }
   }
   chatToggle() {
     this.boolComponent = false;
@@ -81,37 +78,16 @@ onResize(event) {
     this.ms.clearMessage();
     this.toggle();
     this.boolComponent = true;
-    this.onOffChat();
   }
   toggle() {
-    this.sidebarService.toggle(false, 'left');
+    // this.sidebarService.toggle(false, 'left');
+    this.sidebarService.toggle(false,'left');
+    this.iconState = !this.iconState;
   }
-  handleUserMessage(event) {
-    console.log(event);
-    const text = event.message;
-    this.addUserMessage(text);
-    this.loading = true;
-    this.subcription.add( this.chatbotService.dialogFLow(this.sessionId, text).subscribe(res => {
-        const {fulfillmentText } = res;
-        this.addBotMessage(fulfillmentText );
-        this.loading = false;
-    })) ;
-  }
-  addUserMessage(text) {
-    this.messages.push({
-      text,
-      sender: 'You',
-      reply: true,
-      date: new Date()
-    });
-  }
-  addBotMessage(text) {
-    this.messages.push({
-      text,
-      sender: 'Bot',
-     // avatar: '/assets/chatbot.png',
-      date: new Date()
-    });
+  logoutUser(){
+    this.chatbotService.logoutUser();
+    this.selectName = '';
+    this.router.navigate(['/login']);
   }
   ngOnDestroy() {
     this.subcription.unsubscribe();

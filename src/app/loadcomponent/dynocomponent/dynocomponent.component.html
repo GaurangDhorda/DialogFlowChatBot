@@ -1,5 +1,31 @@
 <nb-card [size]="cardSize" status="info" >
-        <nb-card-header> {{i.id}}  {{i.name}}</nb-card-header>
+        <nb-card-header> 
+                    <p> {{i.id}} </p>  <p> {{i.name}} </p>
+                    <button *ngIf="false"  status="info" class="btn" (click)="contextMenu($event)" (window:resize)="onResizeMenu($event)" >
+                        <nb-icon icon="more-vertical-outline" > </nb-icon> 
+                    </button>
+                    <button  [nbPopover]="tmpRef" class="btn ripple" >
+                            <nb-icon icon="more-vertical-outline" > </nb-icon> 
+                    </button>
+                    <ng-template #tmpRef class="animate">
+                            <div class="popupMenuStyle">
+                                    <ul>
+                                        <li (click)="itemClick('One')" >More</li>
+                                        <li (click)="closePopup()">Close</li>
+                                    </ul> 
+                                 </div>
+                    </ng-template>
+        </nb-card-header>
+        <div *ngIf="contextmenu==true">
+               <!-- <app-contextmenu [x]="contextmenuX" [y]="contextmenuY"></app-contextmenu> -->
+               <div class="popupMenuStyle" [ngStyle]="{'left.px': contextmenuX , 'top.px': contextmenuY, 'position':'absolute'}"> 
+                   <ul>
+                       <li (click)="itemClick('One')" >More</li>
+                       <li>Close</li>
+    
+                   </ul> 
+                </div>
+        </div>
          <nb-card-body>
                 <div class="d-flex justify-content-center" *ngIf="loading">
                         <div id="spinner" class="spinner-border text-success" role="status">
@@ -7,7 +33,7 @@
                         </div>
                 </div>
                 <img [hidden]="loading" (load)="onLoad()" [src]="i.imageUrl" class="image" alt="loading">
-            </nb-card-body>
+         </nb-card-body>
      
         <nb-card-footer>
             <div class="footerContainer">
