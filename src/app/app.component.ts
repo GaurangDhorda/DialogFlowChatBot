@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   chatColumn: boolean;
   enableChatButton: boolean;
   isLoading: boolean;
-  iconState: boolean;
+  iconState: boolean = true;
   subcription: Subscription = new Subscription ();
   // Random ID to maintain session with server
   sessionId = Math.random().toString(36).slice(-5);
@@ -80,6 +80,7 @@ onResize(event) {
     this.boolComponent = true;
   }
   toggle() {
+    console.log({toggle: true})
     // this.sidebarService.toggle(false, 'left');
     this.sidebarService.toggle(false,'left');
     this.iconState = !this.iconState;
