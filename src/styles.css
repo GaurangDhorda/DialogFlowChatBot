@@ -12,6 +12,7 @@ nb-icon{
 nb-sidebar{
     background-color: #c6e6e3 !important;
     transition: width .5s !important;
+    overflow-y: scroll !important;
 }
 .progress{
     display: block !important;

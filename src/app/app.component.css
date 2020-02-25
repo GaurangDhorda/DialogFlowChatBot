@@ -4,6 +4,9 @@
 .welcome{
     letter-spacing: 1px;
 }
+nb-layout-header{
+    margin-bottom: 1rem !important;
+}
 nb-icon{
     cursor: pointer;
     font-size: 3rem;
@@ -62,7 +65,7 @@ nb-icon{
     line-height: 1em;
 }
 nb-layout-column{
-    margin: 0 !important;
+    margin-top: 1rem !important;
     padding: 0 !important;
 }
 

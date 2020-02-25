@@ -1,7 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapse_target">
+        <a class="navbar-brand" href="#">Logo</a>
+        <ul class="navbar-nav  myUl">
+            <li class="nav-item myLi dropdown">
+                <a class="nav-link myLi dropdown-toggle" data-toggle="dropdown"
+                     data-target="dropdown_target" href="#"> 
+                  One  <span class="carot"></span> </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown_target" >
+                    <ul class="navbar-nav">
+                        <a href="#" class="dropdown-item">One.Sub</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Two.Sub</a>
+                        <a href="#" class="dropdown-item">Three.Sub</a>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link myLi" href="#"> one </a>
+                </li>
+                <li class="nav-item">
+                        <a class="navbar-link myLi" href="#"> one </a>
+                    </li>
+        </ul>
+    </div>
+</nav>
+
+
 <div class="col-md-6 offset-md-3 mt-5">
         <div class="alert alert-warning fade show " role="alert" *ngIf="loginfail">
                 <strong>  {{ loginFailMessage }} </strong>
-            </div>
+        </div>
         <div class="alert alert-info">
             <strong>Normal User</strong> - U: user P: user<br />
             <strong>Administrator</strong> - U: admin P: admin
@@ -32,4 +64,105 @@
                 </form>
             </div>
         </div>
-    </div>            
+<!--
+        <div>
+            <ul *ngFor="let objAE of generateArray(westeros)">
+                <li *ngIf="isArray(objAE.value); else elseTemp">
+                    <p>{{objAE.key}}</p>
+                    <ul *ngFor="let inner of generateArray (objAE.value)">
+                            <li>
+                                {{inner.value}}
+                            </li>
+                    </ul>
+                    
+                </li>
+                <ng-template #elseTemp>
+                    <li> {{objAE.key}} </li>
+                </ng-template>
+            </ul>
+        </div>
+        
+        
+        <ng-template #repeate let-sections>
+                
+            <ul *ngFor= "let section of generateArray(sections) ">
+                <li *ngIf="isArray(section.value); else elseTemp">
+                        <p>{{section.key}}</p>
+                        <ul *ngFor="let inner of section.value">         
+                                        <ng-container *ngTemplateOutlet="repeate; context:{$implicit:inner}"></ng-container>
+                        </ul>
+                        
+                    </li>
+                    <ng-template #elseTemp>
+                        
+                        <li *ngIf="isObject(section.value); else printVal"> 
+                            {{section.key}}
+                            <ul>
+                                <li>
+                                    {{ objectKeys(section.value)}}
+                                </li>
+                            </ul>
+                            </li>
+                    <ng-template #printVal>
+                        <li> {{section.key}} </li> 
+                    </ng-template>
+                    </ng-template>
+            </ul>
+
+        </ng-template>
+        <ng-container *ngTemplateOutlet="repeate; context:{$implicit:westeros}"></ng-container>-->
+        <ng-template #repeate >
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                    </button>
+                    
+                    <div class="dropdown-menu"  aria-labelledby="dropdownMenu2">
+                       <ng-template #subMenu let-sections>
+                        
+                        <ng-container *ngFor="let menuitem of generateArray(sections.menuSubItem); let i=index" >
+                          
+                            <ng-container *ngIf="isArray(menuitem.value); else objectValues">
+                                    <button class=" dropdown-item arraySubMenu">
+                                        {{menuitem.key | titlecase}}
+                                        <i class="fa fa-angle-double-right dicon" id="submenu" 
+                                         aria-hidden="true" (mousemove) = "onSelect(menuitem, i,$event);"></i>
+                                    </button>
+                            </ng-container>
+                            <ng-template #objectValues>
+                                <ng-container *ngIf="menuitem.value?.length > 0 ;else singleObj">
+                                        <button class="dropdown-item objectSubMenu">
+                                                {{   menuitem.key | titlecase }}
+                                            </button>
+                                </ng-container>
+                                <ng-template #singleObj>
+                                        <button class="dropdown-item objectSubMenu" >
+                                            {{menuitem.key | titlecase}} :
+                                            <span style="color: rgb(41, 233, 23); font-weight: 500; text-transform: capitalize; ">    {{ objectKeys(menuitem.value) }} </span>
+                                            </button>
+                                </ng-template>
+    
+                            </ng-template>    
+                            
+                                   <ng-container *ngIf=" check && isArray(menuitem.value)" >
+                                        <ng-container *ngFor="let menuSubItem of menuitem.value let j=index ">
+                                       <button class="dropdown-item" (click)="alert(menuSubItem)" >
+                                                <ng-container *ngTemplateOutlet="subMenu; context:{$implicit:{ 'menuSubItem': menuSubItem, 'j':j}}">
+                                                </ng-container>                                        
+                                       </button>
+                                    </ng-container>
+                                   </ng-container>
+                                
+                        </ng-container>
+                    </ng-template>
+                    <ng-container *ngTemplateOutlet="subMenu; context:{$implicit: { 'menuSubItem': westeros, 'check': false}}">
+    
+                    </ng-container>
+                    </div>
+                
+                </div>
+            </ng-template>     
+        <!--    <ng-container *ngTemplateOutlet="repeate"></ng-container>    -->
+        
+</div>
+    

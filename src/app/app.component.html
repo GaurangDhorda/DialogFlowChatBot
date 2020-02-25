@@ -1,20 +1,17 @@
 <nb-layout  [windowMode]="true">
   
   <nb-progress-bar [value]="50"></nb-progress-bar>
-  <nb-layout-header fixed>
+  <nb-layout-header fixed >
   <div class="d-flex flex-row navbar-collapse ">
     <nb-icon icon="menu" class="ripple" [ngClass]="iconState ? 'rotate':'' "  (click)="toggle()" status="primary" ></nb-icon>
     <h4>Chatting Bot</h4>
   </div>
-  <div class="navbar-nav d-flex flex-row  justify-content-between">
-      
-      
-  </div>  
   </nb-layout-header>
 
   <nb-sidebar responsive tag='left' *ngIf= "chatbotService.isUserLoggedIn()">
-      
-      <div  class="card lazyComponenet">
+    <nb-list > 
+        <nb-list-item>
+        <div  class="card lazyComponenet">
           <h6 class="card-header text-capitalize text-danger">
                   Wellcome {{ chatbotService.getLoggedInUser() }}
                   <p class="card-text"><button *ngIf= "chatbotService.isUserLoggedIn()"  type="butoon" 
@@ -40,10 +37,12 @@
       <h6 class="card-header">You Selected</h6>
       <p class="card-text">{{selectName}}</p>
     </div>
+  </nb-list-item>
+    </nb-list>
   </nb-sidebar>
   
   <nb-layout-column >
-    <div style="margin: 0 auto; width:90%">
+    <div style="margin: 1rem auto 1rem auto; width:90%">
           <router-outlet ></router-outlet>
     </div>
   </nb-layout-column>

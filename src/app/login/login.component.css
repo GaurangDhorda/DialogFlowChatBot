@@ -1,0 +1,20 @@
+.arraySubMenu{
+    color: brown;
+    font-weight: 600;
+}
+.objectSubMenu{
+    color: rgb(4, 51, 35);
+    font-weight: 600;
+}
+.dicon{
+    float: right;
+}
+.myUl{
+    align-items: center;
+    text-transform: capitalize;
+    }
+.myLi{
+    padding: 1rem;
+    
+
+}

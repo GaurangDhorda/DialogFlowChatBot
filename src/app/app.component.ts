@@ -36,7 +36,7 @@ onResize(event) {
     this.iconState = true;
   }
 }
-  constructor(private http: HttpClient, private chatbotService: ChatbotdialogflowService, private  ts: NbThemeService,
+  constructor(private http: HttpClient, public chatbotService: ChatbotdialogflowService, private  ts: NbThemeService,
               private ms: CommunicationService, private sidebarService: NbSidebarService,
               private router: Router) {
     this.ts.appendLayoutClass('column');
@@ -93,3 +93,4 @@ onResize(event) {
     this.subcription.unsubscribe();
   }
 }
+  

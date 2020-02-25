@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, SimpleChange } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChatbotdialogflowService } from '../chatbotdialogflow.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
@@ -16,10 +17,89 @@ export class LoginComponent implements OnInit {
   error = '';
   loginFailMessage: string;
   loginfail: boolean;
-    
+  objectKeys = Object.keys;
+  check: boolean;
+  westeros = {
+    "name":"gaurang",
+    "arya":"stark",
+    "ramsay":"bolton",
+    "c":[ 
+       { 
+          "d":"iner",
+          "e":{ 
+             "f":"more inner",
+             "g":"obj",
+             "e":"e"
+          },
+          "f":[ 
+             { 
+                "name":"Vijay","z":{"q":"val","c":"val"}
+             },
+             { 
+                "surname":"soni"
+             }
+          ]
+       },
+       { 
+          "d":"inner",
+          "e":{ 
+             "f":"more inner"
+          }
+       }
+    ],
+    "z":{ 
+       "name":"z-value",
+       "t":[ 
+ 
+       ]
+    }
+ };
+ selection = 4;
+  generateArray(obj) {
+    return Object.keys(obj).map((key) => { return { key: key, value: obj[key]} });
+  }
+ isArray(objAE){
+    if ( Array.isArray (objAE) ){
+      
+      return true;
+    }
+    else{
+      return false;
+    }
+ }
+ isObject(values){
+   if (typeof values === 'object'){
+     return true;
+   }
+   else{
+     return false;
+   }
+ }
+ stopClose(event){
+   console.log(event);
+ }
   constructor(private formBuilder: FormBuilder, private authService: ChatbotdialogflowService, private router: Router) { }
+  onSelect(event,id)
+  {
+    console.log( `${id} : ${event.key} and ${event.value} ` );
+    this.check = true;
+    // this.westeros = event.value;
+  }
+  checkType(data){
+    if (Array.isArray (data)){
+      return true;
+    }
+    else {
+      return false;
+    }
 
+  }
+  alert(item){
+    console.log(item.target.value)
+  }
   ngOnInit() {
+    this.check= false;
+    
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]

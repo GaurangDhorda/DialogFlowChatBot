@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, CanActivateChild, CanLoad, Route, 
+        UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ChatbotdialogflowService } from './chatbotdialogflow.service';
 
@@ -7,7 +8,8 @@ import { ChatbotdialogflowService } from './chatbotdialogflow.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor( private router: Router, private authService: ChatbotdialogflowService) {
+  constructor( private router: Router, private authService: ChatbotdialogflowService,
+               private activatedRouter: ActivatedRoute) {
   }
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -15,7 +17,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
       if (this.authService.isUserLoggedIn()) {
         return true;
       }
-      this.router.navigate(['/login']);
+      this.router.navigate(['/'], {relativeTo: this.activatedRouter});
       return false;
   }
   canActivateChild(
@@ -31,7 +33,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     if (this.authService.isUserLoggedIn()) {
       return true;
     }
-    this.router.navigate(['/login']);
+   // this.router.navigate(['/login']);
+    this.router.navigate(['/'], {relativeTo: this.activatedRouter});
+
     return false;
   }
 }
