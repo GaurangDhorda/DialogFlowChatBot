@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommunicationService } from '../communication.service';
 import { ModelData } from 'src/app/modeldata';
@@ -9,7 +9,8 @@ import { element } from 'protractor';
 @Component({
   selector: 'app-dynocomponent',
   templateUrl: './dynocomponent.component.html',
-  styleUrls: ['./dynocomponent.component.css']
+  styleUrls: ['./dynocomponent.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class DynocomponentComponent implements OnInit {
   @Input() i: ModelData ;
@@ -30,8 +31,8 @@ export class DynocomponentComponent implements OnInit {
       this.cardSize = 'medium';
     }
   }
-  constructor(private inputMessageService: CommunicationService
-            , private router: Router, private activatedRoute: ActivatedRoute,
+  constructor(private inputMessageService: CommunicationService,
+              private router: Router, private activatedRoute: ActivatedRoute,
               private sidebarService: NbSidebarService) { }
 
   ngOnInit() {
