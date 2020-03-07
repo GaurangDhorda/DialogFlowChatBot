@@ -10,11 +10,11 @@ import {NebularModuleModule} from './nebular-module/nebular-module.module';
   declarations: [],
   imports: [
     CommonModule,
-    NebularModuleModule,
+    NebularModuleModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],
-  exports : [ReactiveFormsModule, FormsModule, HttpClientModule ,NebularModuleModule]
+  exports : [ReactiveFormsModule, FormsModule, HttpClientModule , NebularModuleModule]
 })
 export class CoreModule { }

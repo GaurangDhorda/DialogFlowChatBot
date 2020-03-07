@@ -21,7 +21,9 @@
     ],
     "paths": {
       "@chatService" : ["./src/app/core/chatbotdialogflow.service"],
-      "@authGuard" : ["./src/app/core/auth.guard"]
+      "@authGuard" : ["./src/app/core/auth.guard"],
+      "@nebularModule/*" : ["./src/app/core/nebular-module/*"],
+      "@coreModule/*" : ["./src/app/core/*"]
     }
   }
 }

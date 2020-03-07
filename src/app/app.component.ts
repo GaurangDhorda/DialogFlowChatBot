@@ -1,9 +1,9 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ChatbotdialogflowService } from '@chatService';
 import { NbThemeService, NbSidebarService } from '@nebular/theme';
 import { CommunicationService } from './loadcomponent/communication.service';
-import { Router, NavigationEnd, NavigationStart, ActivatedRoute, NavigationCancel, NavigationError } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, NavigationCancel, NavigationError } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -23,16 +23,16 @@ export class AppComponent implements OnInit, OnDestroy {
   iconState: boolean = true;
   subcription: Subscription = new Subscription ();
   // Random ID to maintain session with server
-  sessionId = Math.random().toString(36).slice(-5);
+ // sessionId = Math.random().toString(36).slice(-5);
 @HostListener('window:resize', ['$event'])
 onResize(event) {
   if (window.innerWidth <= 770) {
-      this.chatColumn = true;
-      this.enableChatButton = true;
+     // this.chatColumn = true;
+    //  this.enableChatButton = true;
       this.iconState = false;
   }
   else{
-    this.enableChatButton = false;
+   // this.enableChatButton = false;
     this.iconState = true;
   }
 }
@@ -40,22 +40,21 @@ onResize(event) {
               private ms: CommunicationService, private sidebarService: NbSidebarService,
               private router: Router) {
     this.ts.appendLayoutClass('column');
-    this.routerEvents(this.router);
+   // this.routerEvents(this.router);
    }
    routerEvents(e: Router) {
      this.subcription.add( e.events.subscribe( eventsName => {
       if (eventsName instanceof NavigationStart) {
-        this.isLoading = true;
-       // console.log(eventsName.url);
+       // this.isLoading = true;
         if (eventsName.url === '/login') {
        } else if (eventsName.url === '/') {
-         this.boolComponent = false;
+        // this.boolComponent = false;
        } else {
-         this.boolComponent = true;
+        // this.boolComponent = true;
        }
       } else if (eventsName instanceof NavigationEnd || eventsName instanceof NavigationCancel ||
                  eventsName instanceof NavigationError) {
-                    this.isLoading = false;
+                   // this.isLoading = false;
       }
      }));
    }
@@ -65,19 +64,19 @@ onResize(event) {
       this.iconState = true;
     }));
     (window.innerWidth <= 770) ?  this.iconState = false : this.iconState = true;
-    this.boolComponent = false;
-    this.enableChatButton  = false;
+   // this.boolComponent = false;
+   // this.enableChatButton  = false;
   }
   chatToggle() {
-    this.boolComponent = false;
-    this.chatColumn = true;
+   // this.boolComponent = false;
+  //  this.chatColumn = true;
     this.toggle();
     this.selectName = '';
   }
   clearMessage() {
     this.ms.clearMessage();
     this.toggle();
-    this.boolComponent = true;
+ //   this.boolComponent = true;
   }
   toggle() {
     console.log({toggle: true})
@@ -94,4 +93,3 @@ onResize(event) {
     this.subcription.unsubscribe();
   }
 }
-  

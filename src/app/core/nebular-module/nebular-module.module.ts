@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NbThemeModule, NbLayoutModule, NbChatModule, NbSpinnerModule, NbSidebarModule,
-  NbIconModule, NbProgressBarModule, NbCardModule, NbListModule  } from '@nebular/theme';
+  NbIconModule, NbProgressBarModule, NbCardModule, NbListModule , 
+  NbPopoverModule, NbButtonModule, NbSidebarService } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 
 
@@ -18,8 +19,9 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     NbEvaIconsModule,
     NbProgressBarModule,
     NbCardModule,
-    NbSidebarModule.forRoot(),
-    NbListModule
+    NbListModule,
+    NbPopoverModule,
+    NbButtonModule
   ],
   exports: [
     NbThemeModule,
@@ -32,7 +34,17 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     NbProgressBarModule,
     NbCardModule,
     NbSidebarModule,
-    NbListModule
+    NbListModule,
+    NbPopoverModule,
+    NbButtonModule
   ]
 })
-export class NebularModuleModule { }
+export class NebularModuleModule {
+  // forRoot with ModuleWithProviders is used when lazy and eager module wants to have same state of NbServiceModule..
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: NebularModuleModule,
+      providers: [NbSidebarModule.forRoot().providers]
+    };
+  }
+ }

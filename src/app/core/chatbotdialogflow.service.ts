@@ -41,7 +41,6 @@ export class ChatbotdialogflowService {
     return this.getAllUsers().pipe(
         map( users => {
             let user = users.find( user => (user.username === username) && (user.password === password) );
-            console.log(user)
             if (user) {
               this.isLoggedin = true;
               this.loggedInUser = user;

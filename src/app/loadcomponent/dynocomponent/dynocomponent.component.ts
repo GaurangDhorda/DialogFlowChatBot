@@ -68,6 +68,8 @@ export class DynocomponentComponent implements OnInit {
   }
   toggle() {
     this.sidebarService.expand('left');
+   // this.sidebarService.toggle(true,'left');
+   // this.sidebarService.collapse();
   }
   contextMenu(event) {
   //  console.log ( 'X: ' + window.innerWidth + ' Y: ' + window.innerHeight);

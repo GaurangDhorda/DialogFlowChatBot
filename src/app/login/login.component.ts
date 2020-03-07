@@ -111,7 +111,6 @@ export class LoginComponent implements OnInit {
       this.loginfail = false;
       this.submitted = true;
       if (this.loginForm.invalid) {
-        console.log('fire');
         return;
       }
       this.authService.isAuthenticated(this.loginForm.get('username').value, this.loginForm.get('password').value)
