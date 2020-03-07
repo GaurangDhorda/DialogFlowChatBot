@@ -21,7 +21,7 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     NbSidebarModule.forRoot(),
     NbListModule
   ],
-  exports :[
+  exports: [
     NbThemeModule,
     NbEvaIconsModule,
     NbLayoutModule,

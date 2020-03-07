@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChatbotdialogflowService } from './chatbotdialogflow.service';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from '@authGuard';
 
 const routes: Routes = [{path: '', redirectTo: 'login',  pathMatch: 'full'},
                         {path: 'login', component: LoginComponent},
@@ -13,9 +11,10 @@ const routes: Routes = [{path: '', redirectTo: 'login',  pathMatch: 'full'},
                         .then(m => m.LoadcomponentModule), canLoad: [AuthGuard] }
                         ];
                         // if import error is occured then go to tsconfig.json file and change module:2015 to esnext.
+export const routerComponent = [LoginComponent, ChatComponent];
 @NgModule({
   providers: [AuthGuard],
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule ]
 })
 export class AppRoutingModule { }

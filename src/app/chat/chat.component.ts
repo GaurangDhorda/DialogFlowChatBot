@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from '../loadcomponent/communication.service';
-import { ChatbotdialogflowService } from '../chatbotdialogflow.service';
+import { ChatbotdialogflowService } from '@chatService';
 
 @Component({
   selector: 'app-chat',

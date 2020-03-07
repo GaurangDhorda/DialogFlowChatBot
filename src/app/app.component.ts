@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ChatbotdialogflowService } from './chatbotdialogflow.service';
+import { ChatbotdialogflowService } from '@chatService';
 import { NbThemeService, NbSidebarService } from '@nebular/theme';
 import { CommunicationService } from './loadcomponent/communication.service';
 import { Router, NavigationEnd, NavigationStart, ActivatedRoute, NavigationCancel, NavigationError } from '@angular/router';

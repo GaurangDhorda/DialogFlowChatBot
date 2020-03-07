@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoadcomponentComponent } from './loadcomponent.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChatbotdialogflowService } from '../chatbotdialogflow.service';
+import { ChatbotdialogflowService } from '@chatService';
 
 const routes: Routes = [{ path: '', component: LoadcomponentComponent }];
 

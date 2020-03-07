@@ -1,6 +1,6 @@
 import { Component, OnInit, SimpleChanges, SimpleChange } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ChatbotdialogflowService } from '../chatbotdialogflow.service';
+import { ChatbotdialogflowService } from '@chatService';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import {NebularModuleModule} from './nebular-module/nebular-module.module';
 
 
@@ -7,8 +10,11 @@ import {NebularModuleModule} from './nebular-module/nebular-module.module';
   declarations: [],
   imports: [
     CommonModule,
-    NebularModuleModule
+    NebularModuleModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  exports : [NebularModuleModule]
+  exports : [ReactiveFormsModule, FormsModule, HttpClientModule ,NebularModuleModule]
 })
 export class CoreModule { }

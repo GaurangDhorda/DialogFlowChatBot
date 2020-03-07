@@ -18,6 +18,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@chatService" : ["./src/app/core/chatbotdialogflow.service"],
+      "@authGuard" : ["./src/app/core/auth.guard"]
+    }
   }
 }
