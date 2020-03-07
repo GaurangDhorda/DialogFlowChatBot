@@ -72,4 +72,7 @@ nb-layout-column{
 #carouselExampleIndicators{
     height: 50vh;
 }
- 
+.sidebar-container{
+    display: flex;
+    flex-direction: column;
+}

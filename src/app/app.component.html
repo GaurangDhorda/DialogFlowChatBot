@@ -9,8 +9,9 @@
   </nb-layout-header>
 
   <nb-sidebar responsive tag='left' *ngIf= "chatbotService.isUserLoggedIn()">
-    <nb-list > 
+    <nb-list> 
         <nb-list-item>
+          <div class="sidebar-container">
         <div  class="card lazyComponenet">
           <h6 class="card-header text-capitalize text-danger">
                   Wellcome {{ chatbotService.getLoggedInUser() }}
@@ -26,7 +27,6 @@
             </button>
       </div>
 
-    
    <!--
     <div class="mainDiv">
       <a [routerLink]="['/loadcomponent']" (click)="clearMessage()">lazy component</a>
@@ -37,6 +37,7 @@
       <h6 class="card-header">You Selected</h6>
       <p class="card-text">{{selectName}}</p>
     </div>
+  </div>
   </nb-list-item>
     </nb-list>
   </nb-sidebar>
