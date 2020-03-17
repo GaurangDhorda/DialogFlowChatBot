@@ -9,8 +9,8 @@ import { tap, catchError, shareReplay } from 'rxjs/operators';
 })
 export class CommunicationService {
 private subject = new Subject<any>();
-httpUrl: string = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json';
-getHttpData : Observable<ModelData []> = this.http.get<ModelData []>(this.httpUrl).pipe(
+httpUrl = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json';
+getHttpData: Observable<ModelData []> = this.http.get<ModelData []>(this.httpUrl).pipe(
               tap( data => console.log('Server data', data)),
               catchError(this.errorhandler),
               shareReplay(1)

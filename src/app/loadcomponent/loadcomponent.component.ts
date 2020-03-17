@@ -14,7 +14,7 @@ export class LoadcomponentComponent implements OnInit, OnDestroy {
    isLoading: boolean;
    errorMessage: string;
    subcription: Subscription = new Subscription();
-   getHttpData : Observable<ModelData []> = this.ms.getData().pipe(shareReplay(1));
+   getHttpData: Observable<ModelData []> = this.ms.getData().pipe(shareReplay(1));
   constructor(private ms: CommunicationService) { }
 
   ngOnInit() {

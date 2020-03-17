@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, HostListener, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CommunicationService } from '../communication.service';
 import { ModelData } from 'src/app/modeldata';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NbSidebarService, NbPopoverDirective } from '@nebular/theme';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-dynocomponent',
